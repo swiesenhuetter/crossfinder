@@ -54,5 +54,7 @@ for cont in contours:
 
 cv2.imshow('simpler mage', img_simpler)
 
+cv2.imwrite('data/detected.jpg', (255 * img_simpler))
+
 cv2.waitKey(0)
 cv2.destroyAllWindows()
