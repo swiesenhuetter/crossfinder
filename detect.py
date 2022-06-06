@@ -29,8 +29,9 @@ contours, hierarchy = cv2.findContours(thresh_img, cv2.RETR_TREE, cv2.CHAIN_APPR
 #create an empty image for contours
 img_contours = np.zeros(thresh_img.shape)
 # draw the contours on the empty image
-cv2.drawContours(img_contours, contours, -1, 255, 20)
-#save image
+cv2.drawContours(img_contours, contours, -1, 255, 1)
+cv2.imwrite('data/contours.jpg', (255 * img_contours))
+
 
 cv2.imshow('contour mage', img_contours)
 cv2.imshow('contour mage', image)
@@ -39,7 +40,7 @@ img_simpler = np.ones(thresh_img.shape)
 
 for cont in contours:
     peri = cv2.arcLength(cont, True)
-    simpler = cv2.approxPolyDP(cont, 0.03 * peri, True)
+    simpler = cv2.approxPolyDP(cont, 0.05 * peri, True)
     silen = cv2.arcLength(simpler, True)
 
     x_hull = simpler.reshape((len(simpler), 2))
